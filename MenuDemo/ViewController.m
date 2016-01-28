@@ -109,10 +109,8 @@ static CGFloat const locaY = 15;
  */
 - (void)loadData:(UIView *)bgView whatArray:(NSMutableArray *)array
 {
-    CGFloat originX = locaX;
-    CGFloat originY = locaY;
-    __block typeof(originX)weakX = originX;
-    __block typeof(originY)weakY = originY;
+   __block CGFloat weakX = locaX;
+   __block CGFloat weakY = locaY;
     for(int i = 0;i < array.count;i++)
     {
         [UIView animateWithDuration:0.2 delay:0.1 usingSpringWithDamping:0.5 initialSpringVelocity:0.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
@@ -145,7 +143,7 @@ static CGFloat const locaY = 15;
             CGFloat btnW = btnSize.width + 2 * locaX;
             CGFloat btnH = 30;
             //判断一下按钮是否超出
-            if ((originX + btnW) >= self.view.frame.size.width - locaX) {
+            if ((weakX + btnW) >= self.view.frame.size.width - locaX) {
                 weakX = locaX;
                 weakY +=btnH + 5;
             }
